@@ -11,6 +11,7 @@ in
 {
   systemd.services."wireguard-discover" = {
     preStart = ''
+      set -ex
       echo "[*] Verificando existencia de la interfaz wg0...";
       for i in {1..10}; do
         ${ip} link show wg0 >/dev/null 2>&1 && break
@@ -82,7 +83,6 @@ in
               ${wg} set "$WG_INTERFACE" peer "$PEER_PUBKEY" allowed-ips "$PEER_IP/32" endpoint "$HOST_IP:$PORT"
             fi
           done
-        sleep 5
       done
     '';
   };

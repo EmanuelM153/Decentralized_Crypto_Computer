@@ -49,38 +49,38 @@ in
     };
   };
 
-  systemd.network = {
-    enable = true;
-    netdevs."bat0".enable = false;
-    networks = {
-      # # Pruebas
-      # "eth0" = {
-      #   DHCP = "yes";
-      #   matchConfig.Name = "eth0";
-      #   # networkConfig = {
-      #   #   LinkLocalAddressing = "yes";
-      #   #   IPv4LLStartAddress = "169.254.1.0/16";
-      #   # };
-      # };
-
-      "10-wg0" = {
-        DHCP = "no";
-        matchConfig.Name = "wg0";
-        networkConfig = {
-          LinkLocalAddressing = "yes";
-          IPv4LLStartAddress = "169.254.0.0/16";
-        };
-      };
-      "10-bat0" = {
-        DHCP = "no";
-        matchConfig.Name = "bat0";
-        networkConfig = {
-          LinkLocalAddressing = "yes";
-          IPv4LLStartAddress = "169.254.1.0/16";
-        };
-      };
-    };
-  };
+  # systemd.network = {
+  #   enable = true;
+  #   netdevs."bat0".enable = false;
+  #   networks = {
+  #     # # Pruebas
+  #     # "eth0" = {
+  #     #   DHCP = "yes";
+  #     #   matchConfig.Name = "eth0";
+  #     #   # networkConfig = {
+  #     #   #   LinkLocalAddressing = "yes";
+  #     #   #   IPv4LLStartAddress = "169.254.1.0/16";
+  #     #   # };
+  #     # };
+  #
+  #     "10-wg0" = {
+  #       DHCP = "no";
+  #       matchConfig.Name = "wg0";
+  #       networkConfig = {
+  #         LinkLocalAddressing = "yes";
+  #         IPv4LLStartAddress = "169.254.0.0/16";
+  #       };
+  #     };
+  #     "10-bat0" = {
+  #       DHCP = "no";
+  #       matchConfig.Name = "bat0";
+  #       networkConfig = {
+  #         LinkLocalAddressing = "yes";
+  #         IPv4LLStartAddress = "169.254.1.0/16";
+  #       };
+  #     };
+  #   };
+  # };
 
   boot = {
     kernelParams = [ "net.ifnames=0" ];

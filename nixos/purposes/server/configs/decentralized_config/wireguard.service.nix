@@ -12,7 +12,7 @@ in
 {
   systemd.services."wireguard" = {
     preStart = ''
-      set -x
+      set -ex
       echo "[*] Verificando existencia de la interfaz wg0...";
       for i in {1..10}; do
         ${ip} link show wg0 >/dev/null 2>&1 && break
@@ -45,6 +45,7 @@ in
     serviceConfig.Type = "oneshot";
 
     script = ''
+      set -ex
       PUBKEY=$(${wg} show wg0 public-key)
       IP=$(${ip} -4 addr show wg0 | ${grep} -oP '(?<=inet\s)\d+(\.\d+){3}')
       HOSTNAME=$(${hostname})

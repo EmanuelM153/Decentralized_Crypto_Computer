@@ -42,6 +42,7 @@ in
       wants = [ "dhcpd.service" ];
 
       script = ''
+        set -ex
         ${rfkill} unblock wifi
         ${iw} wlan0 set type ibss
         ${ip} link set up mtu 1532 dev wlan0
